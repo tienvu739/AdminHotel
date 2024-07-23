@@ -1,0 +1,33 @@
+﻿<Window x:Class="AdminHotel.QLDV"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:AdminHotel"
+        mc:Ignorable="d"
+        Title="QLDV" Height="450" Width="800">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <StackPanel Orientation="Horizontal" Margin="0,0,0,10">
+            <Grid Width="200" Margin="0,0,10,0">
+                <TextBox Name="ServiceNameTextBox" TextChanged="ServiceNameTextBox_TextChanged" />
+                <TextBlock Name="ServiceNamePlaceholder" Text="Tên dịch vụ" IsHitTestVisible="False"
+                           Foreground="Gray" VerticalAlignment="Center" Margin="5,0,0,0" />
+            </Grid>
+            <Button Content="Thêm" Click="AddServiceButton_Click" Margin="0,0,10,0" />
+            <Button Content="Sửa" Click="EditServiceButton_Click" Margin="0,0,10,0" />
+            <Button Content="Xóa" Click="DeleteServiceButton_Click" />
+        </StackPanel>
+        <ListView Name="ServiceListView" Grid.Row="1" SelectionMode="Single" SelectionChanged="ServiceListView_SelectionChanged">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="ID" DisplayMemberBinding="{Binding IdService}" Width="100" />
+                    <GridViewColumn Header="Tên Dịch Vụ" DisplayMemberBinding="{Binding NameService}" Width="200" />
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>
