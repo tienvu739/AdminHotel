@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AdminHotel.models
 {
-    internal class Hotel
+    internal class Hotels
     {
         public string IdHotel { get; set; }
         public string NameHotel { get; set; }

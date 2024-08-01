@@ -33,7 +33,7 @@ namespace AdminHotel
         {
             try
             {
-                var hotels = await _httpClient.GetFromJsonAsync<List<Hotel>>("https://localhost:7226/api/Hotel/QLKS");
+                var hotels = await _httpClient.GetFromJsonAsync<List<Hotels>>("https://localhost:7226/api/Hotel/QLKS");
                 HotelsDataGrid.ItemsSource = hotels;
             }
             catch (Exception ex)
