@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:AdminHotel"
         mc:Ignorable="d"
-        Title="Home" Height="450" Width="800">
+        Title="Home" Height="400" Width="850">
     <Grid>
         <Menu>
             <MenuItem Header="Tạo tài khoản" Name="CreateAccount" Click="CreateAccount_Click"></MenuItem>
             <MenuItem Header="Quản lý khách sạn" Name="QLKS" Click="QLKS_Click"></MenuItem>
-            <MenuItem Header="Quản lý phòng" Name="QLP"></MenuItem>
+            <MenuItem Header="Quản lý phòng" Name="QLP" Click="QLP_Click"></MenuItem>
             <MenuItem Header="Quản lý khuyến mãi" Name="QLKM" Click="QLKM_Click"></MenuItem>
             <MenuItem Header="Quản lý dịch vụ" Name="QLDV" Click="QLDV_Click"></MenuItem>
             <MenuItem Header="Quản lý đơn hàng" Name="QLDH" Click="QLDH_Click"></MenuItem>
-            <MenuItem Header="Quản lý khách hàng" Name="QLKH"></MenuItem>
+            <MenuItem Header="Quản lý khách hàng" Name="QLKH" Click="QLKH_Click"></MenuItem>
+            <Button Click="Button_Click">Đăng xuất</Button>
         </Menu>
     </Grid>
 </Window>

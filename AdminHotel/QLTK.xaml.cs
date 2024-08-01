@@ -1,25 +1,14 @@
-﻿using AminHotel.models;
+﻿using AdminHotel.models;
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Shapes;
 
 namespace AdminHotel
 {
-    /// <summary>
-    /// Interaction logic for QLTK.xaml
-    /// </summary>
     public partial class QLTK : Window
     {
         private readonly HttpClient _httpClient;
@@ -29,11 +18,13 @@ namespace AdminHotel
             _httpClient = new HttpClient();
             LoadAccounts();
         }
+
         private async Task<bool> CreateAccount(Admin account)
         {
             var response = await _httpClient.PostAsJsonAsync("https://localhost:7226/api/Admin/create", account);
             return response.IsSuccessStatusCode;
         }
+
         private async void LoadAccounts()
         {
             try
@@ -46,6 +37,7 @@ namespace AdminHotel
                 MessageBox.Show($"Lỗi khi tải danh sách tài khoản: {ex.Message}");
             }
         }
+
         private async void Button_Click(object sender, RoutedEventArgs e)
         {
             var button = sender as Button;
@@ -73,12 +65,12 @@ namespace AdminHotel
 
         private async void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            string idAdmin = "String";
+            string idAdmin = Guid.NewGuid().ToString();
             string account = AccountTextBox.Text;
             string password = PasswordBox.Password;
             string name = NameTextBox.Text;
             string address = AddressTextBox.Text;
-            string role = RoleTextBox.Text;
+            string role = (RoleComboBox.SelectedItem as ComboBoxItem)?.Content.ToString();
 
             var newAccount = new Admin
             {
@@ -101,10 +93,21 @@ namespace AdminHotel
                 MessageBox.Show("Tạo tài khoản thất bại. Vui lòng thử lại.");
             }
         }
+
         private async Task<bool> DeleteAccount(string idAdmin)
         {
             var response = await _httpClient.DeleteAsync($"https://localhost:7226/api/Admin/DeleteAccount?id={idAdmin}");
             return response.IsSuccessStatusCode;
         }
+    }
+
+    public class Admin
+    {
+        public string IdAdmin { get; set; }
+        public string Account { get; set; }
+        public string Password { get; set; }
+        public string Name { get; set; }
+        public string Address { get; set; }
+        public string Role { get; set; }
     }
 }

@@ -17,6 +17,7 @@ namespace AdminHotel
             InitializeComponent();
             _httpClient = new HttpClient();
             LoadOrderList();
+            LoadHotelList();
         }
 
         private async void LoadOrderList()
@@ -29,6 +30,19 @@ namespace AdminHotel
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi khi tải danh sách đơn hàng: {ex.Message}");
+            }
+        }
+
+        private async void LoadHotelList()
+        {
+            try
+            {
+                var hotels = await _httpClient.GetFromJsonAsync<List<Hotel>>("https://localhost:7226/api/Order/getHotelStatistics");
+                HotelListView.ItemsSource = hotels;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải danh sách khách sạn: {ex.Message}");
             }
         }
 
@@ -74,5 +88,22 @@ namespace AdminHotel
         public string IdUser { get; set; }
         public string IdDiscount { get; set; }
         public string IdRoom { get; set; }
+    }
+
+    public class Hotel
+    {
+        public string HotelId { get; set; }
+        public string HotelName { get; set; }
+        public double TotalRevenue { get; set; }
+        public int TotalOrders { get; set; }
+        public List<MonthlyRevenue> MonthlyRevenue { get; set; }
+    }
+
+    public class MonthlyRevenue
+    {
+        public int Year { get; set; }
+        public int Month { get; set; }
+        public double Revenue { get; set; }
+        public int OrderCount { get; set; }
     }
 }

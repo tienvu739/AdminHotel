@@ -78,5 +78,24 @@ namespace AdminHotel
             QLDH qLDH = new QLDH();
             qLDH.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow f = new MainWindow();
+            f.Show();
+            this.Close();
+        }
+
+        private void QLKH_Click(object sender, RoutedEventArgs e)
+        {
+            QLKH qLKH = new QLKH();
+            qLKH.Show();
+        }
+
+        private void QLP_Click(object sender, RoutedEventArgs e)
+        {
+            QLP qLP = new QLP();
+            qLP.Show();
+        }
     }
 }

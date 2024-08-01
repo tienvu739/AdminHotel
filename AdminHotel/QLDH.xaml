@@ -31,5 +31,31 @@
                 </GridView>
             </ListView.View>
         </ListView>
+        <ListView Name="HotelListView" SelectionMode="Single" Grid.Row="1" Margin="10, 5, 10, 0">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id Khách Sạn" DisplayMemberBinding="{Binding HotelId}" Width="150" />
+                    <GridViewColumn Header="Tên Khách Sạn" DisplayMemberBinding="{Binding HotelName}" Width="200" />
+                    <GridViewColumn Header="Tổng Doanh Thu" DisplayMemberBinding="{Binding TotalRevenue}" Width="150" />
+                    <GridViewColumn Header="Tổng Đơn Hàng" DisplayMemberBinding="{Binding TotalOrders}" Width="150" />
+                    <GridViewColumn Header="Doanh Thu Hàng Tháng" Width="350">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <ListView ItemsSource="{Binding MonthlyRevenue}" Margin="0">
+                                    <ListView.View>
+                                        <GridView>
+                                            <GridViewColumn Header="Năm" DisplayMemberBinding="{Binding Year}" Width="80" />
+                                            <GridViewColumn Header="Tháng" DisplayMemberBinding="{Binding Month}" Width="80" />
+                                            <GridViewColumn Header="Doanh Thu" DisplayMemberBinding="{Binding Revenue}" Width="100" />
+                                            <GridViewColumn Header="Số Đơn Hàng" DisplayMemberBinding="{Binding OrderCount}" Width="90" />
+                                        </GridView>
+                                    </ListView.View>
+                                </ListView>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
     </Grid>
 </Window>

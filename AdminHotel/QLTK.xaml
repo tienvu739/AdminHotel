@@ -8,7 +8,6 @@
         Title="QLTK" Height="450" Width="800">
     <Grid>
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Top" Margin="10">
-
             <TextBlock Text="Tài Khoản" Margin="0"/>
             <TextBox Name="AccountTextBox" Width="200" Margin="0"/>
 
@@ -22,7 +21,10 @@
             <TextBox Name="AddressTextBox" Width="200" Margin="0"/>
 
             <TextBlock Text="Vai Trò" Margin="0"/>
-            <TextBox Name="RoleTextBox" Width="200" Margin="0"/>
+            <ComboBox Name="RoleComboBox" Width="200" Margin="0">
+                <ComboBoxItem Content="User" />
+                <ComboBoxItem Content="Admin" />
+            </ComboBox>
 
             <Button Content="Tạo Tài Khoản" Width="200" Margin="10" Click="Button_Click_1"/>
 
